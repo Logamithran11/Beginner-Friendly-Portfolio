@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typing Portfolio Section</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: radial-gradient(circle at 20% 30%, #1e293b, #0f172a);
+      font-family: 'Poppins', sans-serif;
+      color: #e2e8f0;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #06b6d4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 15px rgba(124, 58, 237, 0.4); }
+      to { box-shadow: 0 0 35px rgba(6, 182, 212, 0.7); }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin: 0;
+      border-right: 3px solid #7c3aed;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3s steps(30, end) forwards, blink 0.8s step-end infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      margin-top: 12px;
+    }
+
+    .btn {
+      margin-top: 24px;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #7c3aed, #06b6d4);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 12px;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .avatar { width: 90px; height: 90px; font-size: 36px; }
+      .btn { padding: 8px 16px; font-size: 0.9rem; }
+    }
+body.light {
+  background: #f8fafc;
+  color: #0f172a;
+}
+body.light .btn {
+  background: linear-gradient(90deg, #7c3aed, #06b6d4);
+}
+  .socials a {
+    margin: 10px;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #94a3b8;
+    transition: transform 0.3s, color 0.3s;
+  }
+  .socials a:hover {
+    transform: scale(1.2);
+    color: #06b6d4;
+  }
+  .socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* spacing between icons */
+}
+
+.socials img {
+  width: 40px;      /* size of icons */
+  height: 40px;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.socials a:hover img {
+  transform: scale(1.2);       /* slight zoom on hover */
+  filter: drop-shadow(0 0 10px #06b6d4); /* glow effect */
+}
+
+</style>
+</head>
+<body>
+  <div class="avatar">L</div>
+  <h1 id="typing"></h1>
+  <p>Turning ideas into interactive web experiences 🌐</p>
+  <button class="btn" id="viewResumeBtn">View Resume</button>
+  <button class="btn" onclick="toggleMode()">Toggle Mode</button>
+
+<div class="socials">
+  <a href="https://www.linkedin.com/in/logamithran-bs-688009380     " target="_blank">
+  <img src="https://static.vecteezy.com/system/resources/previews/018/930/587/large_2x/linkedin-logo-linkedin-icon-transparent-free-png.png" alt="">
+  <a href="https://github.com/Logamithran11" target="_blank">
+<img src="https://bitperfect.at/assets/blog-images/Headerbild-Was-ist-GitHub-v2.png" alt="">
+</a>
+  <footer>✨ Built using HTML, CSS & JavaScript</footer>
+
+  
+  <script>
+    const typingEl = document.getElementById("typing");
+    const texts = [
+      "Hi, I'm Logamithran BS – a Frontend Developer.",
+      "I design clean and modern UI.",
+      "I love creating with HTML, CSS & JS.",
+      "Let’s build something awesome together!"
+    ];
+
+    let textIndex = 0;
+
+    function typeText() {
+      const text = texts[textIndex];
+      typingEl.textContent = "";
+      typingEl.style.width = "0";
+
+      let i = 0;
+      const typeInterval = setInterval(() => {
+        typingEl.textContent += text[i];
+        i++;
+        if (i === text.length) {
+          clearInterval(typeInterval);
+          setTimeout(() => {
+            textIndex = (textIndex + 1) % texts.length;
+            typeText();
+          }, 2000);
+        }
+      }, 70);
+    }
+
+    function downloadResume() {
+      alert("Replace this with your resume download link!");
+    }
+
+    typeText();
+    
+  document.getElementById("viewResumeBtn").addEventListener("click", function() {
+    // 👇 Replace this URL with your actual resume link
+    const resumeUrl = "https://drive.google.com/file/d/1CsgJIEXIUPjoxpdzfBAln7w-0kO8dToc/view?usp=sharing";
+    
+    // Opens resume in a new browser tab
+    window.open(resumeUrl, "_blank");
+  });
+  </script>
+  <script>
+function toggleMode() {
+  document.body.classList.toggle('light');
+}
+</script>
+
+</body>
+</html>
